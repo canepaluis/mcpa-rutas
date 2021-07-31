@@ -7,6 +7,9 @@ class Planes extends Controller{
         $this->session = new Session();
         $this->session->init();
         //header("Location: ".URL."asignaturas/director");
+        
+    }
+    function render(){
         $this->view->render('planes/director');
     }
 }

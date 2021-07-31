@@ -16,7 +16,7 @@ class Home extends Controller{
             switch($this->session->get("tipo"))
             {
                 case 'Alumno': 
-                    header("Location: ".URL."home/alumno");
+                        header("Location: ".URL."home/alumno");
                 break;
                 case 'Docente': 
                     header("Location: ".URL."home/docente");
