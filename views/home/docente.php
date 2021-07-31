@@ -59,7 +59,7 @@
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 									<li class="seleccionar">
-										<a href="#"> 
+										<a href="<?php echo URL.'perfil_docente';?>"> 
 											<i class="zmdi zmdi-account"></i> Perfiles
 										</a>
 									</li>

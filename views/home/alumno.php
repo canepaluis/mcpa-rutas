@@ -59,7 +59,7 @@
 									<ul class="list-unstyled full-box dashboard-sideBar-Menu menu-menu">
 				
 										<li class="seleccionar">
-											<a href="#"> 
+											<a href="<?php echo URL.'perfil_alumno';?>"> 
 												<i class="zmdi zmdi-account"></i> Perfiles
 											</a>
 										</li>

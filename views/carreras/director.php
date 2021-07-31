@@ -57,17 +57,17 @@
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 									<li class="seleccionar">
-										<a href="carreras"> 
+										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
 									</li>
 									<li>
-										<a href="planes">
+										<a href="<?php echo URL;?>planes">
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
 									</li>
 									<li>
-										<a href="asignaturas">
+										<a href="<?php echo URL;?>asignaturas">
 											<i class="zmdi zmdi-book"></i> Asignaturas
 										</a>
 									</li>
@@ -146,7 +146,8 @@
 												</div>
 				
 												<div class="formulario-box">
-													<form class="diseño-formulario" id="validacioncarreras" >
+											
+													<form class="diseño-formulario" id="validacioncarreras" action="<?php echo constant('URL'); ?>carreras/registrarCarrera" method="POST">
 														<div class="nombre-clasificación-formulario">
 															<h4><i class="zmdi zmdi-info"></i> Información sobre la carrera</h4>
 														</div>
@@ -202,7 +203,7 @@
 																	<div class="col-sm-12 col-md-6">
 																		<div class="separacion-input was-validated">
 																			<label class="nombre-campo" for="grado-academico">Grado académico</label>
-																			<select class="form-select" required disabled>
+																			<select class="form-select" name="graAcademico" required disabled>
 																				<option value="">Selecciona el grado académico</option>
 																				<option value="1">Licenciatura</option>
 																				<option value="2">Ingeniería</option>
@@ -215,7 +216,7 @@
 																	<div class="col-sm-12 col-md-6">
 																		<div class="separacion-input was-validated">
 																			<label class="nombre-campo" for="situacion-carrera">Situación</label>
-																			<select class="form-select" required disabled>
+																			<select class="form-select" name="situacion" required disabled>
 																				<option value="">Selecciona la situación</option>
 																				<option value="1">Vigente</option>
 																				<option value="2">No vigente</option>
@@ -286,17 +287,17 @@
 
 
 	<!--Scripts -->
-	<script src="./js/validador_carreras.js"></script>
-	<script src="./js/validador_planes.js"></script>
-	<script src="./js/validador_asignaturas_modal.js"></script>
-	<script src="./js/validador_asignaturas.js"></script>
-	<script src="./js/jquery-3.1.1.min.js"></script>
-	<script src="./js/sweetalert2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/material.min.js"></script>
-	<script src="./js/ripples.min.js"></script>
-	<script src="./js/jquery.mCustomScrollbar.concat2.min.js"></script>
-	<script src="./js/main.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_carreras.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_planes.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_asignaturas_modal.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_asignaturas.js"></script>
+	<script src="<?php echo URL;?>public/js/jquery-3.1.1.min.js"></script>
+	<script src="<?php echo URL;?>public/js/sweetalert2.min.js"></script>
+	<script src="<?php echo URL;?>public/js/bootstrap.min.js"></script>
+	<script src="<?php echo URL;?>public/js/material.min.js"></script>
+	<script src="<?php echo URL;?>public/js/ripples.min.js"></script>
+	<script src="<?php echo URL;?>public/js/jquery.mCustomScrollbar.concat2.min.js"></script>
+	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<!--<script>
 		$.material.init();

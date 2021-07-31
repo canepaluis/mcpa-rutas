@@ -55,17 +55,17 @@
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 									<li class="seleccionar">
-										<a href="carreras"> 
+										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
 									</li>
 									<li>
-										<a href="planes">
+										<a href="<?php echo URL;?>planes">
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
 									</li>
 									<li>
-										<a href="asignaturas">
+										<a href="<?php echo URL;?>asignaturas">
 											<i class="zmdi zmdi-book"></i> Asignaturas
 										</a>
 									</li>
@@ -674,12 +674,18 @@
 
 
 	<!--Scripts -->
+	<script src="<?php echo URL;?>public/js/validador_planes.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_asignaturas_modal.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_asignaturas.js"></script>
 	<script src="<?php echo URL;?>public/js/jquery-3.1.1.min.js"></script>
 	<script src="<?php echo URL;?>public/js/sweetalert2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/bootstrap.min.js"></script>
 	<script src="<?php echo URL;?>public/js/material.min.js"></script>
 	<script src="<?php echo URL;?>public/js/ripples.min.js"></script>
+	<script src="<?php echo URL;?>public/js/jquery.mCustomScrollbar.concat2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./datatables/datatables.min.js"></script> 
+	<script type="text/javascript" src="./js/data.js"></script>  
 </body>
 </html>

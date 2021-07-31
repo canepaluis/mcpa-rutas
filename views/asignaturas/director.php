@@ -58,17 +58,17 @@
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 									<li class="seleccionar">
-										<a href="carreras"> 
+										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
 									</li>
 									<li>
-										<a href="planes">
+										<a href="<?php echo URL;?>planes">
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
 									</li>
 									<li>
-										<a href="asignaturas">
+										<a href="<?php echo URL;?>asignaturas">
 											<i class="zmdi zmdi-book"></i> Asignaturas
 										</a>
 									</li>
@@ -120,13 +120,12 @@
 
 					<!-- Contenido de pestaña-->
 
-				<div class="pestaña-contenido">
+					<div class="pestaña-contenido">
 					<section class="full-box">
 						<div class="contenido">
 
 		
 							<!-- Pestaña | contenido de sección-->
-						
 							<div class="contenido-box">
 								<div class="nombre-seccion">
 									<h3><i class="zmdi zmdi-book"></i> Asignaturas</h3>
@@ -145,7 +144,7 @@
 								</div>
 
 								<div class="formulario-box">
-									<form class="diseño-formulario" id="validacion_asignatura" >
+									<form class="diseño-formulario" id="validacion_asignatura" action="<?php echo constant('URL'); ?>asignaturas/registroAsignatura" method="POST">
 										
 											<div class="container-fluid">
 											
@@ -264,7 +263,7 @@
 															<label for="usuario" class="formulario__label">Manual de asignatura</label>
 															<div class="formulario__grupo-input">
 																<div class="input-group was-validated">
-																	<input type="file" class="form-control" aria-label="file example" accept="application/pdf" required disabled>
+																	<input type="file" class="form-control" aria-label="file example" accept="application/pdf" name="manual" required disabled>
 																	<div class="invalid-feedback">Selecciona el manual de la asignatura.</div>
 																  </div>
 															</div>
@@ -549,12 +548,19 @@
 
 
 	<!--Scripts -->
+	<script src="<?php echo URL;?>public/js/validador_planes.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_asignaturas_modal.js"></script>
+	<script src="<?php echo URL;?>public/js/validador_asignaturas.js"></script>
 	<script src="<?php echo URL;?>public/js/jquery-3.1.1.min.js"></script>
 	<script src="<?php echo URL;?>public/js/sweetalert2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/bootstrap.min.js"></script>
 	<script src="<?php echo URL;?>public/js/material.min.js"></script>
 	<script src="<?php echo URL;?>public/js/ripples.min.js"></script>
+	<script src="<?php echo URL;?>public/js/jquery.mCustomScrollbar.concat2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<!--<script>
+		$.material.init();
+	</script>-->
 </body>
 </html>
