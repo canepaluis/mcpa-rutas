@@ -53,40 +53,30 @@ inputs_carreras.forEach((input) => {
 	input.addEventListener('blur', validarFormulario_carreras);
 });
 
-/* if(formulario_carreras){
-    formulario_carreras.addEventListener('submit', (e) => {
-        e.preventDefault();
-    
+if(formulario_carreras){
+    formulario_carreras.addEventListener('submit', (e) => {    
         if(campos_carreras.carrera && campos_carreras.coordinador){
-            swal({
-                title: '¿Estas seguro de actualizar?',
-                text: "Esta por actualizar la información en la base de datos, se le recomienda verificar la información.",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#03A9F4',
-                cancelButtonColor: '#F44336',
-                confirmButtonText: '<i class="zmdi zmdi-check-circle"></i> Si, guardar',
-                cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, regresar'
-          }).then(function () {
-            formulario_carreras.reset();
-            document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-                document.querySelector('#grupo__carrera input').classList.remove('is-valid');
-                document.querySelector('#grupo__coordinador input').classList.remove('is-valid');
-                
-            });
-             // window.location.href="";
-          });
+            
     
     
         }
         else{
+            e.preventDefault();
             var x = document.getElementById("alerta_carreras");
             x.style.display = "block";
         }
     
     });
     
-} */
+} 
+
+function alerta(){
+    swal({
+        title: '¡ERROR!',
+        text: 'Esto es un mensaje de error',
+        type: 'error',
+      });
+}
 
 
 

@@ -24,9 +24,13 @@ class Carreras extends Controller{
 
         $this->model->insertar(['carrera' => $nomCarrera, 'inicio' => $fecInicio, 'termino' => $fecTermino, 'grado' => $graAcademico,
         'situacion' => $situación, 'coordinador' => $nomCoordinador]);
-
         header("Location: ".URL."carreras");
+        
+
+  
     }
+
+    
 
 }
 

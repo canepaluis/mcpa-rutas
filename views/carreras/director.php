@@ -1,6 +1,11 @@
 <?php
 	$session = new Session();
+	$bandera="y";
+	if (empty($_GET["cat"])) {
+		$bandera = $_GET["cat"];
+	}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,6 +15,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
 	<link rel="shortcut icon" href="<?php echo URL;?>public/assets/img/upqroo.ico"> 
+	
 	
 <body>
 	<!--Banner informativa de plataforma | Logo, nombre de módulo, Usuario y tipo de usuario-->
@@ -108,7 +114,7 @@
 															<a onclick="activarinput()"><div class=espacio><i class="zmdi zmdi-edit"></i> Editar</div></a>
 														</li>
 														<li>
-															<a onclick="agregar()"><div class=espacio><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
+															<a href="<?php echo URL;?>agregar"><div class=espacio><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
 														</li>
 													</ul>
 												</li>
@@ -302,5 +308,22 @@
 	<!--<script>
 		$.material.init();
 	</script>-->
+	<?php
+	if($bandera=="x"){
+		echo "<script>
+		function alerta(){
+		 swal({
+		   title: '¡Carrera agregada!',
+		   text: 'Has agregado una nueva carrera a la base de datos.',
+		   type: 'success',
+		 });
+		}
+			 alerta();                   
+		</script>";
+		$bandera=false;
+	}
+?>
+
+	
 </body>
 </html>
