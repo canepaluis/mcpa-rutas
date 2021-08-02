@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-	<title>PEU</title>
+	<title>PEU - <?php echo $session->get("tipo");?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
@@ -61,21 +61,6 @@
 										<li class="seleccionar">
 											<a href="<?php echo URL.'perfil_alumno';?>"> 
 												<i class="zmdi zmdi-account"></i> Perfiles
-											</a>
-										</li>
-										<li>
-											<a href="<?php echo constant('URL'); ?>carreras">
-												<i class="zmdi zmdi-graduation-cap"></i> Carreras
-											</a>
-										</li>
-										<li>
-											<a href="<?php echo constant('URL'); ?>planes">
-												<i class="zmdi zmdi-library"></i> Planes
-											</a>
-										</li>
-										<li>
-											<a href="<?php echo constant('URL'); ?>asignaturas">
-												<i class="zmdi zmdi-book"></i> Asignaturas
 											</a>
 										</li>
 										<li>
