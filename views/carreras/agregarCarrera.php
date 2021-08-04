@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-	<title>PEU</title>
+	<title>Carreras</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
@@ -29,7 +29,7 @@
 					</div>
 
 					<div class="col-md-4 nombre-plan">
-						<h1><i class="zmdi zmdi-view-dashboard"></i> ACarrera, planes y asignaturas</h1>
+						<h1><i class="zmdi zmdi-view-dashboard"></i> Carrera, planes y asignaturas</h1>
 					</div>
 					<div class="col-9 col-sm-6 col-md-4 seccion-datos">
 						<div class="datos-usuario datos-orientacion">
@@ -102,13 +102,14 @@
 													<a href="#!" class="btn-exit-system margen-navbar"><div class="espacio"><i></i>Cerrar sesión</div></a>
 												</li>
 												<li class="li-right">
-													<a href="#!"><div><i class="zmdi zmdi-menu"></i></div></a>
+													<a href=""><div><i class="zmdi zmdi-menu"></i></div></a>
 													<ul>
-														<li>
-															<a onclick="activarinput()"><div class=espacio><i class="zmdi zmdi-edit"></i> Editar</div></a>
+													<li>
+															<a href="<?php echo URL;?>carreras" style="text-decoration:none"><div class="espacio menu-opciones-plus"><i class="zmdi zmdi-edit"></i> Editar</div></a>
 														</li>
+														
 														<li>
-															<a href="<?php echo URL;?>asignaturas"><div class=espacio><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
+															<a href="<?php echo URL;?>asignaturas" style="text-decoration:none"><div class="espacio menu-opciones-plus"><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
 														</li>
 													</ul>
 												</li>
@@ -160,7 +161,7 @@
 																		<div class="formulario__grupo" id="grupo__carrera">
 																			<label for="usuario" class="formulario__label">Nombre de carrera</label>
 																			<div class="formulario__grupo-input">
-																				<input type="text" class="formulario__input form-control" name="carrera" id="carrera" placeholder="Nombre oficial de la carrera" required disabled>
+																				<input type="text" class="formulario__input form-control" name="carrera" id="carrera" placeholder="Nombre oficial de la carrera" required>
 																			</div>
 																			<p class="formulario__input-error">Solo puede contener caracteres tipo letra y maximo de 50.</p>
 																		</div>
@@ -176,7 +177,7 @@
 																		<div class="formulario__grupo was-validated" id="grupo__fechainicio">
 																			<label for="fechainicio" class="formulario__label">Fecha de inicio</label>
 																			<div class="formulario__grupo-input">
-																				<input type="date" class="formulario__input form-control" name="fechainicio" id="fechainicio" required disabled>
+																				<input type="date" class="formulario__input form-control" name="fechainicio" id="fechainicio" required>
 					
 																				<div class="invalid-feedback formulario__input-error">Elije una fecha de inicio</div>
 																			</div>
@@ -189,7 +190,7 @@
 																		<div class="formulario__grupo" id="grupo__fechatermino">
 																			<label for="fechatermino" class="formulario__label">Fecha de finalización</label>
 																			<div class="formulario__grupo-input">
-																				<input type="date" class="formulario__input form-control" name="fechatermino" id="fechatermino" disabled>
+																				<input type="date" class="formulario__input form-control" name="fechatermino" id="fechatermino">
 																			</div>
 																			
 																		</div>
@@ -203,7 +204,7 @@
 																	<div class="col-sm-12 col-md-6">
 																		<div class="separacion-input was-validated">
 																			<label class="nombre-campo" for="grado-academico">Grado académico</label>
-																			<select class="form-select" name="graAcademico" required disabled>
+																			<select class="form-select" name="graAcademico" required>
 																				<option value="">Selecciona el grado académico</option>
 																				<option value="1">Licenciatura</option>
 																				<option value="2">Ingeniería</option>
@@ -216,7 +217,7 @@
 																	<div class="col-sm-12 col-md-6">
 																		<div class="separacion-input was-validated">
 																			<label class="nombre-campo" for="situacion-carrera">Situación</label>
-																			<select class="form-select" name="situacion" required disabled>
+																			<select class="form-select" name="situacion" required>
 																				<option value="">Selecciona la situación</option>
 																				<option value="1">Vigente</option>
 																				<option value="2">No vigente</option>
@@ -237,7 +238,7 @@
 																		<div class="formulario__grupo" id="grupo__coordinador">
 																			<label for="usuario" class="formulario__label">Nombre del coordinador</label>
 																			<div class="formulario__grupo-input">
-																				<input type="text" class="formulario__input form-control" name="coordinador" id="coordinador" placeholder="Nombre del coordinador" required disabled>
+																				<input type="text" class="formulario__input form-control" name="coordinador" id="coordinador" placeholder="Nombre del coordinador" required>
 																			</div>
 																			<p class="formulario__input-error">Solo puede contener caracteres tipo letra y maximo de 75.</p>
 																		</div>
@@ -251,9 +252,7 @@
 				
 																
 																<div class="boton-dise">
-																	<button class="btn btn-primary botonespacio" id="boton" style="display:none" type="submit">Actualizar información</button>
-																	<button class="btn btn-primary botonespacio" id="boton_agregar" style="display:none" type="submit">Agregar nueva carrera</button>
-																	<a class="btn btn-primary botonespacio" onclick="alerta();" >alerta</a>
+																	<button class="btn btn-primary botonespacio" id="boton" type="submit">Actualizar información</button>
 																</div>
 															</div>
 									

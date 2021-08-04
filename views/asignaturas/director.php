@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-	<title>PEU</title>
+	<title>Asignaturas</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
@@ -57,7 +57,7 @@
 							<!-- Opciones del menú de hamburguesa | MCPA -->
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-									<li class="seleccionar">
+									<li>
 										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
@@ -67,7 +67,7 @@
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
 									</li>
-									<li>
+									<li class="seleccionar">
 										<a href="<?php echo URL;?>asignaturas">
 											<i class="zmdi zmdi-book"></i> Asignaturas
 										</a>

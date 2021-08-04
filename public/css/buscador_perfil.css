@@ -1,10 +1,11 @@
 /* Buscador */
 .content-buscador{
   font-family: Candara;
-  padding-left: 2.5em;
+  padding-left: 1.2em;
   color: #5e5e5e;
   
 }
+
 .content-buscador .textb{
   margin-right: 1.5em;
   border-radius: 4px;
@@ -53,19 +54,6 @@
 /* Fin Buscador */
 
 /* Inicio resultado buscador */
-
-.rowgreen{
-  margin-top: 30px;
-  height: 10px;
-  background-color: #00B6BF;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.rowhite{
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35);
-}
 
 .element{
   border:1px solid #707070;

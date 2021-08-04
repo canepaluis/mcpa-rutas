@@ -15,6 +15,10 @@
 
 
 
+.menu-opciones-plus{
+	color: white;
+	text-decoration: none;
+}
 
 /*============ Estilos generales*/
 body, html{
@@ -298,8 +302,12 @@ i{
 	margin-right: 3px;
 }
 
-
-
+.image-aguila{
+	background-image: url('./../assets/img/students.png');
+	background-repeat: no-repeat;
+	height: 469px;
+	width: 499px;
+}
 
 .centrarvertical{
 	height: 100%;
@@ -403,6 +411,7 @@ display:block;
 
 .caja-menu{
 	padding: 0;
+	
 	
 }
 .dashboard-sideBar,
@@ -578,15 +587,11 @@ list-style: none;
 	margin-right: 4%;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	
-	
 }
 
 .nombre-seccion{
 	padding-bottom: 10px;
 	border-bottom: 1.8px solid #dbdbdb;
-	
-
 }
 
 .descripcion-seccion{

@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-	<title>PEU</title>
+	<title>Plataforma Educativa Universitaria</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
@@ -31,12 +31,12 @@
 					</div>
 
 					<div class="col-md-4 nombre-plan">
-						<h1><i class="zmdi zmdi-view-dashboard"></i> Carrera, planes y asignaturas</h1>
+						<h1><i class="zmdi zmdi-view-dashboard"></i> Menú principal</h1>
 					</div>
 					<div class="col-9 col-sm-6 col-md-4 seccion-datos">
 						<div class="datos-usuario datos-orientacion">
-							<h2 class="nombre-usuario"><?php echo $session->get("nombre"); ?></h2>
-							<h5 class="tipo-usuario"><?php echo $session->get("tipo");?></h5>
+						<h2 class="nombre-usuario"><?php echo $session->get("nombre"); ?></h2>
+							<h5 class="tipo-usuario"><?php echo $session->get("tipo"); ?></h5>
 						</div>
 					</div>
 				</div>
@@ -57,28 +57,51 @@
 						<div class="full-box dashboard-sideBar-ct">
 							<!-- Opciones del menú de hamburguesa | MCPA -->
 							<div class="caja-menu centrarvertical">
-								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-									<li class="seleccionar">
-										<a href="#"> 
-											<i class="zmdi zmdi-account"></i> Perfiles
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="zmdi zmdi-folder"></i> Carreras, planes y asignaturas
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="zmdi zmdi-calendar"></i> Periodos, grupos y horarios
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="zmdi zmdi-border-color"></i> Evaluación docente
-										</a>
-									</li>
-								</ul>
+								
+									<ul class="list-unstyled full-box dashboard-sideBar-Menu menu-menu">
+				
+										<li class="">
+											<a href="<?php echo URL.'perfil_director';?>"> 
+												<i class="zmdi zmdi-account"></i> Perfiles
+											</a>
+										</li>
+										<li>
+											<a href="<?php echo constant('URL'); ?>carreras">
+												<i class="zmdi zmdi-graduation-cap"></i> Carreras
+											</a>
+										</li>
+										<li>
+											<a href="<?php echo constant('URL'); ?>planes">
+												<i class="zmdi zmdi-library"></i> Planes
+											</a>
+										</li>
+										<li>
+											<a href="<?php echo constant('URL'); ?>asignaturas">
+												<i class="zmdi zmdi-book"></i> Asignaturas
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="zmdi zmdi-calendar"></i> Periodos
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="zmdi zmdi-accounts"></i> Grupos
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="zmdi zmdi-time"></i> Horarios
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="zmdi zmdi-border-color"></i> Evaluación docente
+											</a>
+										</li>
+									</ul>
+								
 							</div>
 						</div>
 				</div>
@@ -100,7 +123,7 @@
 											<a href="#!"><div class="op-navegador"><div class="navegadornombre">Inicio</div></div></a>
 										</li>
 										<li class="li-right">
-											<a href="#" class="btn-exit-system margen-navbar"><div class="espacio"><i></i>Cerrar sesión</div></a>
+											<a href="#!" class="btn-exit-system margen-navbar"><div class="espacio"><i></i>Cerrar sesión</div></a>
 										</li>
 									</ul>
 								
@@ -120,12 +143,20 @@
 						
 							<div class="contenido-box">
 								<div class=caja-home>
-									<div class="subcaja-home">
-										<div class="descripcion-home">
-											<p class="titulo-home">Bienvenido</p>
-											<p>Tu credencial de usuario tiene acceso a los siguientes módulos. ¡Elige uno!</p>
+									<div class="row centrarvertical">
+										<div class="col-sm-12 col-md-6">
+											<div class="alert alert-primary" role="alert">
+												<h4 class="alert-heading">¡Bienvenido!</h4>
+												<p>Tu credencial de usuario tiene acceso a los siguientes opciones.</p>
+												<hr>
+												<p class="mb-0">PEU | Plataforma Educativa Universitaria.</p>
+											</div>
+										</div>
+										<div class="col-sm-12 col-md-6">
+											<div class="image-aguila"></div>
 										</div>
 									</div>
+								
 
 								</div>
 							</div>

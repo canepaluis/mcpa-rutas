@@ -61,6 +61,8 @@ class Login extends Controller{
                             $this->session->add("usuario", $usuario);
                             $this->session->add("nombre", $res_nombre['Nombres']." ".$res_nombre['Apellido_paterno']." ".$res_nombre['Apellido_materno']);
                             $this->session->add("tipo", "Director");
+                            $this->session->add("coorCarrera", $res_nombre['ID_Carrera']);
+                            $this->session->add("alerta", false);
                             header("Location:  ".URL."home/director");
                         }
                         else {

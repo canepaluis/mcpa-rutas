@@ -1,21 +1,15 @@
 <?php
 	$session = new Session();
-	$bandera="y";
-	if (empty($_GET["cat"])) {
-		$bandera = $_GET["cat"];
-	}
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-	<title>PEU</title>
+	<title>Carreras</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
 	<link rel="shortcut icon" href="<?php echo URL;?>public/assets/img/upqroo.ico"> 
-	
 	
 <body>
 	<!--Banner informativa de plataforma | Logo, nombre de módulo, Usuario y tipo de usuario-->
@@ -108,13 +102,13 @@
 													<a href="#!" class="btn-exit-system margen-navbar"><div class="espacio"><i></i>Cerrar sesión</div></a>
 												</li>
 												<li class="li-right">
-													<a href="#!"><div><i class="zmdi zmdi-menu"></i></div></a>
+													<a href=""><div><i class="zmdi zmdi-menu"></i></div></a>
 													<ul>
 														<li>
-															<a onclick="activarinput()"><div class=espacio><i class="zmdi zmdi-edit"></i> Editar</div></a>
+															<a onclick="alerta(),activarinput()" style="text-decoration:none"><div class="espacio menu-opciones-plus"><i class="zmdi zmdi-edit"></i> Editar</div></a>
 														</li>
 														<li>
-															<a href="<?php echo URL;?>agregar"><div class=espacio><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
+															<a href="<?php echo URL;?>carreras/agregarCarrera" style="text-decoration:none"><div class="espacio menu-opciones-plus"><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
 														</li>
 													</ul>
 												</li>
@@ -153,7 +147,7 @@
 				
 												<div class="formulario-box">
 											
-													<form class="diseño-formulario" id="validacioncarreras" action="<?php echo constant('URL'); ?>carreras/registrarCarrera" method="POST">
+													<form class="diseño-formulario" id="validacioncarreras" action="<?php echo constant('URL'); ?>carreras/actualizarCarrera" method="POST">
 														<div class="nombre-clasificación-formulario">
 															<h4><i class="zmdi zmdi-info"></i> Información sobre la carrera</h4>
 														</div>
@@ -166,7 +160,7 @@
 																		<div class="formulario__grupo" id="grupo__carrera">
 																			<label for="usuario" class="formulario__label">Nombre de carrera</label>
 																			<div class="formulario__grupo-input">
-																				<input type="text" class="formulario__input form-control" name="carrera" id="carrera" placeholder="Nombre oficial de la carrera" required disabled>
+																				<input type="text" class="formulario__input form-control" name="carrera" id="carrera" placeholder="Nombre oficial de la carrera" value="<?php echo $this->resultado['Nom_Carrera'];?>" required disabled>
 																			</div>
 																			<p class="formulario__input-error">Solo puede contener caracteres tipo letra y maximo de 50.</p>
 																		</div>
@@ -182,7 +176,7 @@
 																		<div class="formulario__grupo was-validated" id="grupo__fechainicio">
 																			<label for="fechainicio" class="formulario__label">Fecha de inicio</label>
 																			<div class="formulario__grupo-input">
-																				<input type="date" class="formulario__input form-control" name="fechainicio" id="fechainicio" required disabled>
+																				<input type="date" class="formulario__input form-control" name="fechainicio" id="fechainicio" value="<?php echo $this->resultado['Inicio'];?>" required disabled>
 					
 																				<div class="invalid-feedback formulario__input-error">Elije una fecha de inicio</div>
 																			</div>
@@ -195,7 +189,7 @@
 																		<div class="formulario__grupo" id="grupo__fechatermino">
 																			<label for="fechatermino" class="formulario__label">Fecha de finalización</label>
 																			<div class="formulario__grupo-input">
-																				<input type="date" class="formulario__input form-control" name="fechatermino" id="fechatermino" disabled>
+																				<input type="date" class="formulario__input form-control" name="fechatermino" id="fechatermino" value="<?php echo $this->resultado['Terminacion'];?>" disabled>
 																			</div>
 																			
 																		</div>
@@ -211,10 +205,17 @@
 																			<label class="nombre-campo" for="grado-academico">Grado académico</label>
 																			<select class="form-select" name="graAcademico" required disabled>
 																				<option value="">Selecciona el grado académico</option>
-																				<option value="1">Licenciatura</option>
-																				<option value="2">Ingeniería</option>
-																				<option value="3">Maestría</option>
-																				<option value="4">Diplomado</option>
+																				<?php foreach ($this->niveles as $opciones) : ?>
+																				<option value="<?php echo $opciones->ID_Niv ?>"
+																				
+																				<?php $seleccionar= $this->resultado['ID_Niv'];
+																				if($seleccionar==$opciones->ID_Niv){
+																					echo "selected";
+																				}
+																				?>
+
+																				> <?php echo $opciones->Niv_Nombre ?></option>
+																				<?php endforeach;?>
 																			  </select>
 																			  <div class="invalid-feedback formulario__input-error">Selecciona el grado académico de la carrera.</div>
 																		</div>
@@ -224,8 +225,17 @@
 																			<label class="nombre-campo" for="situacion-carrera">Situación</label>
 																			<select class="form-select" name="situacion" required disabled>
 																				<option value="">Selecciona la situación</option>
-																				<option value="1">Vigente</option>
-																				<option value="2">No vigente</option>
+																				<?php foreach ($this->situacionCarrera as $k) : ?>
+																				<option value="<?php echo $k->ID_sit?>"
+																				
+																				<?php $seleccionar= $this->resultado['ID_Sit'];
+																				if($seleccionar==$k->ID_sit){
+																					echo "selected";
+																				}
+																				?>
+																	
+																				> <?php echo $k->Sit_Nombre?></option>
+																				<?php endforeach;?>
 																			  </select>
 																			  <div class="invalid-feedback formulario__input-error">Selecciona la situación actual de la carrera.</div>
 																		</div>
@@ -243,7 +253,7 @@
 																		<div class="formulario__grupo" id="grupo__coordinador">
 																			<label for="usuario" class="formulario__label">Nombre del coordinador</label>
 																			<div class="formulario__grupo-input">
-																				<input type="text" class="formulario__input form-control" name="coordinador" id="coordinador" placeholder="Nombre del coordinador" required disabled>
+																				<input type="text" class="formulario__input form-control" name="coordinador" id="coordinador" placeholder="Nombre del coordinador" value="<?php echo $this->resultado['Cordinador'];?>" required disabled>
 																			</div>
 																			<p class="formulario__input-error">Solo puede contener caracteres tipo letra y maximo de 75.</p>
 																		</div>
@@ -305,25 +315,27 @@
 	<script src="<?php echo URL;?>public/js/jquery.mCustomScrollbar.concat2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<!--<script>
-		$.material.init();
-	</script>-->
 	<?php
-	if($bandera=="x"){
+	if($session->get("alerta")){
 		echo "<script>
+		x=true;
 		function alerta(){
 		 swal({
-		   title: '¡Carrera agregada!',
-		   text: 'Has agregado una nueva carrera a la base de datos.',
+		   title: '¡Carrera actualizada!',
+		   text: 'La información de la carrera ha sido actulizada correctamente.',
 		   type: 'success',
-		 });
+		 });then(function () {
+			window.location.href='carreras';
+		});
 		}
-			 alerta();                   
+
+		if(x==true){
+			alerta();
+			x=false;
+		}
 		</script>";
-		$bandera=false;
+		$session->add("alerta", false);
 	}
 ?>
-
-	
 </body>
 </html>

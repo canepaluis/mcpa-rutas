@@ -10,7 +10,12 @@ class Planes extends Controller{
         
     }
     function render(){
-        $this->view->render('planes/director');
+        if($this->session->get("tipo") == "Director" || $this->session->get("tipo") == "Administrador")
+        {
+            $this->view->render('planes/director');
+        }else{
+            $this->view->render('errores/error401');
+        }
     }
 }
 
