@@ -23,6 +23,12 @@ body {
   padding: 15px;
   margin: auto;
 }
+.form-error {
+  width: 100%;
+  max-width: 480px;
+  padding: 15px;
+  margin: auto;
+}
 
 .form-signin .checkbox {
   font-weight: 400;

@@ -28,10 +28,10 @@
   </style>
   <body class="text-center fondo">
     
-    <main class="form-signin">
+    <main class="form-error">
       <div class="font formulario-login">
         <img class="mb-2 mt-4" src="public/assets/img/error404.png" alt="" width="350" height="250">
-        <a href="<?php echo constant('URL'); ?>home"><button type="button" class="btn btn-primary mt-4 mb-4" >Ir a menú principal</button></a>
+        <a href="<?php echo constant('URL'); ?>home"><button type="button" class="btn btn-primary  btn-lg mt-4 mb-4" >Ir a menú principal</button></a>
       </div>
     </main>
 
