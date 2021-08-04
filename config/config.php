@@ -1,11 +1,11 @@
 <?php
 
-define('URL', 'http://localhost/peu_upqroo-main/');
+define('URL', 'http://localhost/peu_upqroo/');
 
 define('HOST', 'localhost');
-define('DB', 'peu');
-define('USER', 'sammy');
-define('PASSWORD', "1234");
+define('DB', 'bd-peu-con_data-v1.10final');
+define('USER', 'root');
+define('PASSWORD', "");
 define('CHARSET', 'utf8mb4');
 
 ?>
