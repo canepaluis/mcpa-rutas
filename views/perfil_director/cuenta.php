@@ -5,13 +5,11 @@
 <html lang="es">
 
 <head>
-	<title>Datos Generales</title>
+	<title>Cuenta</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
 	<link rel="shortcut icon" href="<?php echo URL;?>public/assets/img/upqroo.ico"> 
-
-    
 
     <link href="<?php echo URL;?>public/css/style_perfil.css" rel="stylesheet" type="text/css">
 	
@@ -44,7 +42,7 @@
 			</div>
 	</section>
 	</header>
-	
+
     <?php
         if($session->get('operacion'))
         {   
@@ -56,6 +54,7 @@
         $session->remove('operacion');
         } 
     ?>
+
 
 	<!--Sección de contenido de página | Menú de hamburguesa e información de pestaña-->
 	<section class="seccionmaster">
@@ -137,124 +136,54 @@
 											<a href="<?php echo URL.'perfil_director';?>"><div class="op-navegador"><div class="navegadornombre">Perfil</div><div class="navegadorflecha"><i class="zmdi zmdi-chevron-right"></i></div></div></a>
 										</li>
 										<li class="li-left indice-navegacion">
-											<a href="#!"><div class="op-navegador"><div class="navegadornombre">Datos Generales</div></div></a>
+											<a href="#!"><div class="op-navegador"><div class="navegadornombre">Cuenta</div></div></a>
 										</li>
 										<li class="li-right">
 											<a href="#!" class="btn-exit-system margen-navbar"><div class="espacio"><i></i>Cerrar sesión</div></a>
 										</li>
 										<li class="li-right">
 											<a href="#!"><div><i class="zmdi zmdi-menu"></i></div></a>
-											<ul>
-												<li>
-													<a href="<?php echo URL;?>perfil_director/datos_generales_modificar"><div class=espacio><i class="zmdi zmdi-edit"></i> Editar</div></a>
-												</li>
-											</ul>
 										</li>
 									</ul>
 								
 						        </nav>
 
 				<!-- Contenido de pestaña-->
-
                 <div class="pestaña-contenido">
 					<section class="full-box">
 						<div class="contenido">
                             <div class="contenido-box">
-                <!-- Informacion - Inicio -->                
-            <!-- Informacion - Inicio -->
-            <form class="container mt-3">
+                <!-- Informacion - Inicio -->
+                <form class="container mt-3" action="<?php echo URL;?>perfil_director/update_cuenta" method="POST" enctype="multipart/form-data">
+				<input type="hidden" name="num_control" value="<?php echo $session->get("usuario");?>">
                 <div class="row rowgreen"></div>
                 <div class="row rowhite">
                     <div class="col">
                         <div class="row">
                             <div class="col mt-3">
-                                <h4>Datos Generales</h4>
+                                <h4>Cambiar contraseña</h4>
                                 <hr>
                             </div>
                         </div>
                         <div class="row formcss">
-                            <div class="col-8">
-                                <div class="row">
-                                    <div class=" col-6">
-                                        <label>Nombre</label>
-                                        <input type="text" class="form-control" disabled value="<?php echo $this->resultado_director['Nombres'];?>">
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Apellido paterno</label>
-                                        <input type="text" class="form-control" disabled value="<?php echo $this->resultado_director['Apellido_paterno'];?>">
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Apellido materno</label>
-                                        <input type="text" class="form-control" disabled value="<?php echo $this->resultado_director['Apellido_materno'];?>">
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Numero de control</label>
-                                        <input type="text" class="form-control" disabled value="<?php echo $this->resultado_director['Num_Control'];?>">
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Carrera</label>
-                                        <input type="text" class="form-control" disabled
-                                        value="<?php echo $this->resultado_carrera['Nom_Carrera'];?>">
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Estatus</label>
-                                        <input type="text" class="form-control" disabled value="<?php echo $this->resultado_estatus['Nombre'];?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4 imageform">
-                                <img src="<?php echo URL;?>public/assets/fotos/<?php echo $this->resultado_director['Imagen'];?>"
-                                    class="rounded-circle z-depth-1-half avatar-pic image-fluid" width="200"
-                                    alt="example placeholder avatar">
-                            </div>
-                            <div class="col-6">
-                                <label>Pais</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_pais['Nombre'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_estado['Nombre'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>Municipio</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_municipio['Nombre'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>CURP</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_generales['CURP'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>Fecha de nacimiento</label>
-                                <input type="date" class="form-control" disabled  value="<?php echo $this->resultado_generales['Fecha_Nac'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>Estado civil</label>
-                                <input type="text" class="form-control" disabled
-                                    value="<?php echo $this->resultado_generales['Estado_Civil'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>RFC</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_generales['RFC'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>Periodo</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_descripcion_periodo['Descripcion'].' '.$this->resultado_id_descripcion_periodo['Anio'];?>">
-                            </div>
-                            <div class="col-6">
-                                <label>Genero</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $this->resultado_generales['Genero'];?>">
+                            <div class="col-12">
+                                <label>Nueva contraseña</label>
+                                <input type="password" name="password" class="form-control" required>
                             </div>
                         </div>
                     </div>
+					<div class="form-group mt-3">
+                            <button type="submit" class="btn btn-primary" name="inf_administrativo">Guardar</button>
+                            <a href="<?php echo URL;?>perfil_director/cuenta" class="btn btn-danger">Cancelar</a>
+                        </div>
                 </div>
             </form>
             <br>
-                <!-- Informacion - Fin -->                
+                <!-- Informacion - Fin -->
                             </div>
                         </div>
                     </section>
                 </div>
-
 			</div>
 			</div>
 		</div>
