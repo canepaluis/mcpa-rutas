@@ -51,13 +51,13 @@
 
 			<!-- Menú de hamburguesa | MCPA -->
 				
-				<div class="cover dashboard-sideBar">
+			<div class="cover dashboard-sideBar">
 					<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
 						<div class="full-box dashboard-sideBar-ct">
 							<!-- Opciones del menú de hamburguesa | MCPA -->
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-									<li>
+									<li class="seleccionar">
 										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
@@ -67,7 +67,7 @@
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
 									</li>
-									<li class="seleccionar">
+									<li>
 										<a href="<?php echo URL;?>asignaturas">
 											<i class="zmdi zmdi-book"></i> Asignaturas
 										</a>
