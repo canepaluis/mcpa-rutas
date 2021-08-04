@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-	<title>PEU - <?php echo $session->get("tipo");?></title>
+	<title>Plataforma Educativa Universitaria</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
@@ -29,7 +29,7 @@
 					</div>
 
 					<div class="col-md-4 nombre-plan">
-						<h1><i class="zmdi zmdi-view-dashboard"></i> Carrera, planes y asignaturas</h1>
+						<h1><i class="zmdi zmdi-view-dashboard"></i>Menú principal</h1>
 					</div>
 					<div class="col-9 col-sm-6 col-md-4 seccion-datos">
 						<div class="datos-usuario datos-orientacion">
@@ -58,7 +58,7 @@
 								
 									<ul class="list-unstyled full-box dashboard-sideBar-Menu menu-menu">
 				
-										<li class="seleccionar">
+										<li class="">
 											<a href="<?php echo URL.'perfil_alumno';?>"> 
 												<i class="zmdi zmdi-account"></i> Perfiles
 											</a>

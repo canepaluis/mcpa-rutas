@@ -5,12 +5,14 @@
 <html lang="es">
 
 <head>
-	<title>PEU - <?php echo $session->get("tipo");?></title>
+	<title>Plataforma Educativa Universitaria</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
 	<link rel="shortcut icon" href="<?php echo URL;?>public/assets/img/upqroo.ico"> 
 	
+</head>
+
 <body>
 	<!--Banner informativa de plataforma | Logo, nombre de módulo, Usuario y tipo de usuario-->
 	<header >
@@ -29,12 +31,12 @@
 					</div>
 
 					<div class="col-md-4 nombre-plan">
-						<h1><i class="zmdi zmdi-view-dashboard"></i> Carrera, planes y asignaturas</h1>
+						<h1><i class="zmdi zmdi-view-dashboard"></i> Menú principal</h1>
 					</div>
 					<div class="col-9 col-sm-6 col-md-4 seccion-datos">
 						<div class="datos-usuario datos-orientacion">
-							<h2 class="nombre-usuario"><?php echo $session->get("nombre"); ?></h2>
-							<h5 class="tipo-usuario"><?php echo $session->get("tipo");?></h5>
+						<h2 class="nombre-usuario"><?php echo $session->get("nombre"); ?></h2>
+							<h5 class="tipo-usuario"><?php echo $session->get("tipo"); ?></h5>
 						</div>
 					</div>
 				</div>
@@ -58,8 +60,8 @@
 								
 									<ul class="list-unstyled full-box dashboard-sideBar-Menu menu-menu">
 				
-										<li class="seleccionar">
-											<a href="<?php echo URL.'perfil_alumno';?>"> 
+										<li class="">
+											<a href="<?php echo URL.'perfil_director';?>"> 
 												<i class="zmdi zmdi-account"></i> Perfiles
 											</a>
 										</li>
@@ -79,7 +81,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="<?php echo constant('URL'); ?>#">
+											<a href="#">
 												<i class="zmdi zmdi-calendar"></i> Periodos
 											</a>
 										</li>
@@ -186,3 +188,4 @@
 	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
+</html>

@@ -1,17 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>PEU</title>
+    <link rel="shortcut icon" href="public/assets/img/upqroo.ico">
+    <link href="public/css/login.css" rel="stylesheet">
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <div id="main">
-        <h1 class="center error"><?php echo $this->mensaje; ?></h1>
-    </div>
+  </head>
 
-</body>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 700px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <body class="text-center fondo">
+    
+    <main class="form-signin">
+      <div class="font formulario-login">
+        <img class="mb-2 mt-4" src="public/assets/img/error404.png" alt="" width="350" height="250">
+        <a href="<?php echo constant('URL'); ?>home"><button type="button" class="btn btn-primary mt-4 mb-4" >Ir a menú principal</button></a>
+      </div>
+    </main>
+
+
+    
+  </body>
 </html>
