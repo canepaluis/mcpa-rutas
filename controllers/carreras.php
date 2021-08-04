@@ -10,7 +10,12 @@ class Carreras extends Controller{
         
     }
     function render(){
-        $this->view->render('carreras/director');
+        if($this->session->get("tipo") == "Director" || $this->session->get("tipo") == "Administrador")
+        {
+            $this->view->render('carreras/director');
+        }else{
+            $this->view->render('errores/error401');
+        }
     }
     
     function registrarCarrera(){

@@ -137,6 +137,23 @@ class Perfil_Docente extends Controller{
         }
     }
 
+    function cuenta(){
+        $this->view->render('perfil_docente/cuenta');
+    }
+
+    function update_cuenta(){
+        $array_cuenta = array("usuario" => $_POST['num_control'], "pass" =>  password_hash($_POST["password"], PASSWORD_DEFAULT));
+        $update_cuenta= $this->model->UpdateCuenta($array_cuenta);
+
+        if($update_cuenta){
+            $this->session->add("operacion","Se actualizo correctamente");
+        }else{
+            $this->session->add("operacion","No se actualizo correctamente");
+        }
+
+        header("Location: ". URL ."perfil_docente/cuenta");
+    }
+
 
     function documentos(){
         $resultado_documentos = $this->model->getDocumentosUsuario($this->session->get("usuario"));

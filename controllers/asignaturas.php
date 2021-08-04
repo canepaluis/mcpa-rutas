@@ -10,13 +10,14 @@ class Asignaturas extends Controller{
     }
     
     function render(){
-        $this->view->render('asignaturas/director');
-        /*if($this->session->get("tipo") == "Director")
+        
+        if($this->session->get("tipo") == "Director" || $this->session->get("tipo") == "Administrador")
         {
             $this->view->render('asignaturas/director');
         }else{
-            echo("<script> alert('¡Acceso denegado!');  window.location = ".URL."home';</script>");
-        }*/
+            $this->view->render('errores/error401');
+            
+        }
         
     }
 
