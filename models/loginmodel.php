@@ -52,11 +52,11 @@ class LoginModel extends Model{
     //Obtiene el nombre completo si el perfil es director - Un resultado
     public function get_nombre_director($datos)
     {
-        $consulta = $this->db->connect()->prepare("SELECT Nombres, Apellido_materno, Apellido_paterno FROM director_carrera WHERE Num_Control = ?");
+        $consulta = $this->db->connect()->prepare("SELECT Nombres, Apellido_materno, Apellido_paterno, ID_Carrera FROM director_carrera WHERE Num_Control = ?");
         $consulta->execute(array($datos['usuario']));
 
         return !empty($consulta) ? $fila = $consulta->fetch(PDO::FETCH_ASSOC) : false;
-    }    
+    }  
 }
 
 ?>

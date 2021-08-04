@@ -88,6 +88,28 @@ inputs_carreras.forEach((input) => {
     
 } */
 
+if(formulario_carreras){
+    formulario_carreras.addEventListener('submit', (e) => {    
+        if(campos_carreras.carrera && campos_carreras.coordinador){
+            
+    
+    
+        }
+        else{
+            e.preventDefault();
+            var x = document.getElementById("alerta_carreras");
+            x.style.display = "block";
+        }
+    
+    });
+    
+} 
+
+function alerta() {
+	validar_input_carreras(expresiones_carreras.texto,'carrera', 'carrera');
+	validar_input_carreras(expresiones_carreras.coordinador, 'coordinador', 'coordinador');
+}
+
 
 
 

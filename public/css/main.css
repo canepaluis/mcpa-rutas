@@ -15,6 +15,10 @@
 
 
 
+.menu-opciones-plus{
+	color: white;
+	text-decoration: none;
+}
 
 /*============ Estilos generales*/
 body, html{
