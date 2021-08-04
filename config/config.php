@@ -1,6 +1,6 @@
 <?php
 
-define('URL', 'http://localhost/peu/');
+define('URL', 'http://localhost/peu_upqroo/');
 
 define('HOST', 'localhost');
 define('DB', 'bd-peu-con_data-v1.10final');
