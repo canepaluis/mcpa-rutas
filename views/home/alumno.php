@@ -63,18 +63,9 @@
 												<i class="zmdi zmdi-account"></i> Perfiles
 											</a>
 										</li>
+									
 										<li>
-											<a href="<?php echo constant('URL'); ?>#">
-												<i class="zmdi zmdi-calendar"></i> Periodos
-											</a>
-										</li>
-										<li>
-											<a href="#">
-												<i class="zmdi zmdi-accounts"></i> Grupos
-											</a>
-										</li>
-										<li>
-											<a href="#">
+											<a href="<?php echo URL.'mpgh_estudiantes';?>">
 												<i class="zmdi zmdi-time"></i> Horarios
 											</a>
 										</li>

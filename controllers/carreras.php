@@ -12,11 +12,15 @@ class Carreras extends Controller{
     function render(){
         if($this->session->get("tipo") == "Director" || $this->session->get("tipo") == "Administrador")
         {
+            $this->consultar();
+            $this->llenadoGrado();
+            $this->llenadoSituacion();
             $this->view->render('carreras/director');
         }else{
             $this->view->render('errores/error401');
         }
     }
+
     
     function registrarCarrera(){
         //echo "registrarcarrera si funciona xd";
@@ -27,11 +31,18 @@ class Carreras extends Controller{
         $situación = $_POST['situacion'];
         $nomCoordinador = $_POST['coordinador'];
 
-        $this->model->insertar(['carrera' => $nomCarrera, 'inicio' => $fecInicio, 'termino' => $fecTermino, 'grado' => $graAcademico,
+        $estadoConsultaAgregar=$this->model->insertar(['carrera' => $nomCarrera, 'inicio' => $fecInicio, 'termino' => $fecTermino, 'grado' => $graAcademico,
         'situacion' => $situación, 'coordinador' => $nomCoordinador]);
-
-        header("Location: ".URL."carreras");
+        if($estadoConsultaAgregar=='SI'){
+            //echo "la consulta si se ejecuto";
+            $this->session->add("alerta", true);
+        }else{
+          //  echo "la consulta no se ejecuto";
+        }
+        
+        header("Location: ".URL."carreras/agregarCarrera");
     }
+
 
     function actualizarCarrera(){
         //echo "registrarcarrera si funciona xd";
@@ -47,6 +58,11 @@ class Carreras extends Controller{
         //echo $idCarrera;
         $this->session->add("alerta", true);
         header("Location: ".URL."carreras"); 
+    }
+    function agregarCarrera(){
+        $this->llenadoGrado();
+        $this->llenadoSituacion();
+        $this->view->render('carreras/agregarCarrera');
     }
 
     function consultar(){

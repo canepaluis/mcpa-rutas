@@ -21,7 +21,7 @@ const expresiones_asignaturas = {
 	nombreasig:/^[a-zA-ZÀ-ÿ\s]{1,40}$/,
 	nombreasigcorto: /^[a-zA-Z0-9\_\-]{1,30}$/,
 	horas:  /^[0-9]{1,4}$/,
-	text:/^[a-zA-ZÀ-ÿ\s]{1,500}$/
+	text:/^[a-zA-ZÀ-ÿ\s,.]{1,500}$/
 
 	
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>PEU</title>
+    <title>Plataforma Educativa Universitaria</title>
     <link rel="shortcut icon" href="public/assets/img/upqroo.ico">
     <link href="public/css/login.css" rel="stylesheet">
     <link href="public/css/bootstrap.min.css" rel="stylesheet">

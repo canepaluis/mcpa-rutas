@@ -178,6 +178,14 @@ class Perfil_AdministrativoModel extends Model{
                 return false;
             }
 
+        //Informacion par actualizar cuenta
+        public function UpdateCuenta($array){
+            $sql = "UPDATE cuenta SET Passw=? WHERE ID_Mt_Ctl=?";
+            $consulta= $this->db->connect()->prepare($sql);
+            $consulta->execute([$array['pass'],$array['usuario']]);
+
+            return !empty($consulta) ? true : false;
+        }
 
         //BUSCADOR
 

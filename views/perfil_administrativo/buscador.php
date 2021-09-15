@@ -64,6 +64,21 @@
 										</li>
 										<li>
 											<a href="#">
+												<i class="zmdi zmdi-graduation-cap"></i> Carreras
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="zmdi zmdi-library"></i> Planes
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="zmdi zmdi-book"></i> Asignaturas
+											</a>
+										</li>
+										<li>
+											<a href="#">
 												<i class="zmdi zmdi-calendar"></i> Periodos
 											</a>
 										</li>

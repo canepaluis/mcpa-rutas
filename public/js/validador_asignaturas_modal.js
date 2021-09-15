@@ -67,20 +67,10 @@ textare.forEach((textarea) => {
 
 if(formulario){
 	formulario.addEventListener('submit', (e) => {
-		e.preventDefault();
+		
 	
-		if(campos.descripcion1 && campos.sub && campos.descripcion2 && campos.competenciasgenericas && campos.actividades){
-			swal({
-				title: '¿Estas seguro de actualizar?',
-				text: "Esta por actualizar la información en la base de datos, se le recomienda verificar la información.",
-				type: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#03A9F4',
-				cancelButtonColor: '#F44336',
-				confirmButtonText: '<i class="zmdi zmdi-check-circle"></i> Si, guardar',
-				cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, regresar'
-		  }).then(function () {
-			formulario.reset();
+		if(campos.descripcion1 && campos.sub && campos.competenciasgenericas && campos.actividades){
+			
 			document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
 				document.querySelector('#grupo__descripcion1 textarea').classList.remove('is-valid');
 				document.querySelector('#grupo__sub textarea').classList.remove('is-valid');
@@ -94,12 +84,10 @@ if(formulario){
 				
 			
 			});
-			 // window.location.href="";
-		  });
-	
-	
+
 		}
 		else{
+			e.preventDefault();
 			var x = document.getElementById("alerta_modal");
 			x.style.display = "block";
 		}

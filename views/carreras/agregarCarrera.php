@@ -83,8 +83,7 @@
 				<!-- NavBar | Barra de navegación -->
 	
 								<!-- NavBar -->
-								<nav class="dashboard-Navbar">
-									
+								<nav class="dashboard-Navbar">	
 											<ul class="submenu list-unstyled">
 												<li class="li-left">
 													<a href="#!"><div class="btn-menu-dashboard"><i class="zmdi zmdi-more-vert"></i></div></a>
@@ -106,11 +105,7 @@
 													<ul>
 													<li>
 															<a href="<?php echo URL;?>carreras" style="text-decoration:none"><div class="espacio menu-opciones-plus"><i class="zmdi zmdi-edit"></i> Editar</div></a>
-														</li>
-														
-														<li>
-															<a href="<?php echo URL;?>asignaturas" style="text-decoration:none"><div class="espacio menu-opciones-plus"><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
-														</li>
+													</li>
 													</ul>
 												</li>
 											</ul>
@@ -206,10 +201,13 @@
 																			<label class="nombre-campo" for="grado-academico">Grado académico</label>
 																			<select class="form-select" name="graAcademico" required>
 																				<option value="">Selecciona el grado académico</option>
-																				<option value="1">Licenciatura</option>
-																				<option value="2">Ingeniería</option>
-																				<option value="3">Maestría</option>
-																				<option value="4">Diplomado</option>
+																				<?php foreach ($this->niveles as $opciones) : ?>
+																				<option value="<?php echo $opciones->ID_Niv ?>"
+																				
+																				
+
+																				> <?php echo $opciones->Niv_Nombre ?></option>
+																				<?php endforeach;?>
 																			  </select>
 																			  <div class="invalid-feedback formulario__input-error">Selecciona el grado académico de la carrera.</div>
 																		</div>
@@ -219,8 +217,13 @@
 																			<label class="nombre-campo" for="situacion-carrera">Situación</label>
 																			<select class="form-select" name="situacion" required>
 																				<option value="">Selecciona la situación</option>
-																				<option value="1">Vigente</option>
-																				<option value="2">No vigente</option>
+																				<?php foreach ($this->situacionCarrera as $k) : ?>
+																				<option value="<?php echo $k->ID_sit?>"
+																				
+																				
+																	
+																				> <?php echo $k->Sit_Nombre?></option>
+																				<?php endforeach;?>
 																			  </select>
 																			  <div class="invalid-feedback formulario__input-error">Selecciona la situación actual de la carrera.</div>
 																		</div>
@@ -299,8 +302,26 @@
 	<script src="<?php echo URL;?>public/js/jquery.mCustomScrollbar.concat2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<!--<script>
-		$.material.init();
-	</script>-->
+	<?php
+	if($session->get("alerta")){
+		echo "<script>
+		function alerta(){
+		 swal({
+		   title: '¡Carrera agregada!',
+		   text: 'La carrera ha sido aagregada con exitosamente.',
+		   type: 'success',
+		  	confirmButtonColor: '#03A9F4',
+		  	cancelButtonColor: '#F44336',
+		  	confirmButtonText: 'Cerrar',
+		 }).then(function () {
+			window.location.href=url +  'carreras';
+		});
+		}
+
+		alerta();
+		</script>";
+		$session->add("alerta", false);
+	}
+?>
 </body>
 </html>

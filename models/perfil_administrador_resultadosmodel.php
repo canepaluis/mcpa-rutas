@@ -220,6 +220,23 @@ class Perfil_Administrador_ResultadosModel extends Model{
                 return false;
             }
 
+            public function getTiposDocumentos(){
+                $sql = "SELECT ID_Tipo_Doc, Nombre AS nombre_tipo_documento FROM tipo_documentos";
+                $consulta= $this->db->connect()->prepare($sql);
+                $consulta->execute();
+    
+                if(!empty($consulta))
+                {
+                    $resultado = array();
+                    while($fila =$consulta->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $resultado[] = $fila;
+                    }
+                    return $resultado;
+                }
+                return false;
+            }
+
     //INFORMACION DEL DOCENTE
         public function getDocente($id){
             $sql="SELECT * FROM docentes WHERE Num_Control= ?";//Se hace la consulta para validar los datos
@@ -652,6 +669,143 @@ class Perfil_Administrador_ResultadosModel extends Model{
         }
         return false;
     }
+
+    public function getImagen($id){
+        $sql="SELECT Imagen FROM alumnos WHERE Matricula= ?";//Se hace la consulta para validar los datos
+        $consulta=$this->db->connect()->prepare($sql);//se asigna una variable para usar el metodo prepare
+        $consulta->execute(array($id));//se utiliza el metodo execute para ejecutar la consulta
+
+        return !empty($consulta) ? $fila = $consulta->fetch(PDO::FETCH_ASSOC) : false;
+    }
+
+    public function getOrigen($origen){
+        $sql="SELECT ID_Origen FROM Origen WHERE ID_Pais= ? AND ID_Estado = ? AND ID_Municipio = ? ";//Se hace la consulta para validar los datos
+        $consulta=$this->db->connect()->prepare($sql);//se asigna una variable para usar el metodo prepare
+        $consulta->execute([$origen['pais'],$origen['estado'], $origen['municipio']]); 
+
+        return !empty($consulta) ? $fila = $consulta->fetch(PDO::FETCH_ASSOC) : false;
+    }
+
+    public function updateDocumentos($data){
+        $sql = "UPDATE documentos SET Nombre = ?, Ruta = ? , Estatus = ? , ID_Tipo_Doc = ? WHERE ID_Mt_Ctl = ?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['nombre'], $data['ruta'],$data['estatus'],$data['tipo'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function insertDocumentos($data){
+        $sql = "INSERT INTO documentos (ID_Mt_Ctl, Nombre, Ruta, Estatus, ID_Tipo_Doc) 
+        VALUES (?,?,?,?,?)";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['usuario'],$data['nombre'],$data['ruta'],$data['estatus'],$data['tipo_doc']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function deleteDocumento($data){
+        $sql = "DELETE FROM documentos WHERE ID_Mt_Ctl = ? AND Nombre = ?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['usuario'],$data['nombre']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateAlumno($data){
+        $sql = "UPDATE alumnos SET Nombres=?, Apellido_Materno=?, Apellido_Paterno=?, ID_Carrera=?, Plan_estudio=?, Creditos_Acumulados=?, 
+        Periodo_Ingreso=?, Periodo_Actual=?, Imagen=?, Estatus=?, Tipo_Ingreso=?, 
+        Grupo=? WHERE Matricula=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['nombres'], $data['ap_P'],$data['ap_M'],$data['carrera'],$data['plan_estudio'],$data['creditos'],$data['periodo_ingreso'],$data['periodo_actual']
+        ,$data['imagen'],$data['estatus'],$data['tipo_ingreso'],$data['grupo'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+    
+    public function updateDocente($data){
+        $sql = "UPDATE docentes SET Nombres=?, Apellido_materno=?, Apellido_paterno=?, 
+        Imagen=?, Estatus=?, ID_Grado=?, Periodo_Actual=? WHERE Num_Control=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['nombres'], $data['ap_M'],$data['ap_P'],$data['imagen'],$data['estatus'], $data['grado'],$data['periodo_ingreso'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateDirector($data){
+        $sql = "UPDATE director_carrera SET Nombres=?, Apellido_materno=?, Apellido_paterno=?,
+         Imagen=?, Estatus=?, ID_Carrera=? WHERE Num_Control=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['nombres'], $data['ap_M'],$data['ap_P'],$data['imagen'],$data['estatus'], $data['carrera'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateAdministrativo($data){
+        $sql = "UPDATE administrativos SET Nombres=?, Apellido_materno=?, Apellido_paterno=?, Imagen=?, Estatus=?, ID_Carrera=? WHERE Num_Control=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['nombres'], $data['ap_M'],$data['ap_P'],$data['imagen'],$data['estatus'], $data['carrera'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateGeneral($data){
+        $sql = "UPDATE datos_generales SET ID_Origen=?, Fecha_Nac=?, CURP=?, RFC=?, Estado_Civil=?, Genero=? WHERE ID_Mt_Ctl=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['origen'], $data['nacimiento'],$data['curp'],$data['rfc'],$data['estado_civil'],$data['genero'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateContacto($data){
+        $sql = "UPDATE contacto SET Domicilio=?, Tel_Domicilio=?, Celular=?, 
+        Nombre_Emergencia=?, Tel_Emergencia=? WHERE ID_Mt_Ctl=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['domicilio'], $data['tel_domi'],$data['celular'],$data['nombre_emergencia'],$data['numero_emergencia'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateMedico($data){
+        $sql = "UPDATE servicio_medico SET Nombre=?, Num_Afiliacion=?, Estatus=?, Tipo_Sangre=? WHERE ID_Mt_Ctl=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['empresa_afiliada'], $data['nss'],$data['estatus'],$data['tipo_sangre'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+    
+    public function updateProcedencia($data){
+        $sql = "UPDATE procedencia SET ID_Bachiller=?, Fecha_egreso=?, ID_Bach_Area=?, Prom_Gral=?, Prom_Exani_2=?, Prom_EGEL=?, Prom_TOEFL=? WHERE Matricula=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['bachiller'], $data['fecha_egreso'],$data['area_bachiller'],$data['general'],$data['exani'],$data['egel'],$data['toeftl'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updateAdicional($data){
+        $sql = "UPDATE datos_adicionales SET ID_Indigena=?, ID_Beca=?, ID_Discapacidad=? WHERE Matricula=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['grupo_indigena'], $data['beca'],$data['discapacidad'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    
+    public function updateLaboral($data){
+        $sql = "UPDATE datos_laborales SET ID_Area=?, ID_Departamento=?, Fecha_ingreso=?, ID_Puesto=? WHERE Num_Control=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['area_academica'], $data['departamento'],$data['fecha_ingreso'],$data['puestos'],$data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
+    public function updatePassword($data){
+        $sql = "UPDATE cuenta SET Passw=? WHERE ID_Mt_Ctl=?";
+        $consulta= $this->db->connect()->prepare($sql);
+        $consulta->execute([$data['pass'], $data['usuario']]);
+
+        return !empty($consulta) ? true : false;
+    }
+
     
 }
 ?>

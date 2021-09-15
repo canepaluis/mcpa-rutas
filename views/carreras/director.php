@@ -318,21 +318,20 @@
 	<?php
 	if($session->get("alerta")){
 		echo "<script>
-		x=true;
 		function alerta(){
 		 swal({
 		   title: '¡Carrera actualizada!',
 		   text: 'La información de la carrera ha sido actulizada correctamente.',
 		   type: 'success',
-		 });then(function () {
-			window.location.href='carreras';
+		  	confirmButtonColor: '#03A9F4',
+		  	cancelButtonColor: '#F44336',
+		  	confirmButtonText: 'Cerrar',
+		 }).then(function () {
+			window.location.href=url +  'carreras';
 		});
 		}
 
-		if(x==true){
-			alerta();
-			x=false;
-		}
+		alerta();
 		</script>";
 		$session->add("alerta", false);
 	}

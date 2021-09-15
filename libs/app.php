@@ -46,12 +46,8 @@ class App{
                     }
                     if(method_exists($controller, $url[1]))
                     {
-                        if(func_num_args() > 0)
-                        {
-                            $controller->{$url[1]}($param);
-                        }else{
-                            $controller = new Errores();
-                        }   
+                        //REVISAR
+                        $controller->{$url[1]}($param);
                     }else{
                         $controller = new Errores();
                     }

@@ -8,6 +8,8 @@ class Database{
     private $password;
     private $charset;
 
+    private $pdo;
+
     public function __construct(){
         $this->host = constant('HOST');
         $this->db = constant('DB');
@@ -24,12 +26,16 @@ class Database{
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ];
             
-            $pdo = new PDO($connection, $this->user, $this->password, $options);
+            $this->pdo = new PDO($connection, $this->user, $this->password, $options);
     
-            return $pdo;
+            return $this->pdo;
         }catch(PDOException $e){
             print_r('Error connection: ' . $e->getMessage());
         }
+    }
+
+    function cerrarConexion(){
+        $this->pdo = null;
     }
 
 }

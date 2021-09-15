@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-	<title>Planes académicos</title>
+	<title>Planes Académicos</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
@@ -23,8 +23,6 @@
 								<p>Plataforma Educativa Universitaria</p>
 							</div>
 						</div>
-						
-						
 
 					</div>
 
@@ -48,18 +46,18 @@
 
 			<!-- Menú de hamburguesa | MCPA -->
 				
-			<div class="cover dashboard-sideBar">
+				<div class="cover dashboard-sideBar">
 					<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
 						<div class="full-box dashboard-sideBar-ct">
 							<!-- Opciones del menú de hamburguesa | MCPA -->
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-									<li class="seleccionar">
+									<li>
 										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
 									</li>
-									<li>
+									<li class="seleccionar">
 										<a href="<?php echo URL;?>planes">
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
@@ -103,10 +101,10 @@
 													<a href="#!"><div><i class="zmdi zmdi-menu"></i></div></a>
 													<ul>
 														<li>
-															<a onclick="activarinput()"><div class=espacio><i class="zmdi zmdi-edit"></i> Editar</div></a>
+															<a><div class=espacio><i class="zmdi zmdi-edit"></i> Editar</div></a>
 														</li>
 														<li>
-															<a onclick="agregar()"><div class=espacio><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
+															<a onclick="agregar()" href="<?php echo URL;?>planes/agregar" style="text-decoration:none"><div class="espacio menu-opciones-plus" ><i class="zmdi zmdi-plus-circle"></i> Agregar</div></a>
 														</li>
 													</ul>
 												</li>
@@ -142,23 +140,39 @@
 													<p>Visualiza, actualiza y agrega asignaturas  según el programa de la carrera, procura ser cuidadoso con la información para no tener 
 														problemas a largo plazo.</p>
 												</div>
-
-												<div class="row justify-content-center">
-													<div class="col-md-12">
+												<div class="input-group" >
+									
+													<form action="<?php echo constant('URL'); ?>planes/getBuscador" method="POST">
 														<div class="input-group pb-4 pt-1 buscador">
-															<input type="text" class="form-control" placeholder="Buscar plan por clave" aria-label="Recipient's username" aria-describedby="button-addon2">
-															<button class="btn btn-primary" type="button" id="button-addon2"><i class="zmdi zmdi-search"></i> Buscar</button>
-														  </div>
-													</div>
+														<select class="form-select" id="inputGroupSelect04" name="plan">
+																	<?php foreach ($this->select as $opciones) : ?>
+																		<option value="<?php echo $opciones->Cod_Revision?>"		
+																			<?php $seleccionar= $this->resultadoPlan['Cod_Revision'];
+																				if($seleccionar==$opciones->Cod_Revision)
+																				{
+																					echo "selected";
+																				}
+																			?>
+																		> <?php echo $opciones->Cod_Revision ?></option>
+																	<?php endforeach;?>
+														</select>
+														<button class="btn btn-primary" type="submit"><i class="zmdi zmdi-search"></i> Buscar</button>
+														</div>
+													</form>
+													
+													
+												</div>
+												<div class="input-group mb-3">
+																										
 												</div>
 				
 												<div class="formulario-box">
-													<form class="diseño-formulario" id="validacionplanes" >
+													<form class="diseño-formulario" id="validacionplanes">
 														<div class="nombre-clasificación-formulario">
 															<h4><i class="zmdi zmdi-info"></i> Información de plan académico</h4>
 														</div>
 															<div class="container-fluid">
-				
+															
 																<!-- Input grupo carrera-->
 				
 																<div class= "row">
@@ -166,15 +180,25 @@
 																		<div class="formulario__grupo" id="grupo__carrera">
 																			<label for="usuario" class="formulario__label">Nombre de carrera</label>
 																			<div class="formulario__grupo-input">
-																				<input type="text" class="formulario__input form-control" name="carrera" id="carrera" placeholder="Nombre oficial de la carrera" required disabled>
+																				<input type="text" class="formulario__input form-control" name="carrera" id="carrera" placeholder="Nombre oficial de la carrera" required disabled value="<?php echo $this->resultadoPlan['Nom_Carrera'];?>">
+																			</div>
+																			<p class="formulario__input-error">Solo puede contener caracteres tipo letra y maximo de 40.</p>
+																		</div>
+																	</div>
+																</div>
+																	<!-- total materias -->
+																	<div class= "row">
+																	<div class="col-sm-12 col-md-12 ">
+																		<div class="formulario__grupo" id="grupo__carrera">
+																			<label for="usuario" class="formulario__label">Total Materias</label>
+																			<div class="formulario__grupo-input">
+																				<input type="text" class="formulario__input form-control" name="totalmaterias" id="totalmaterias" placeholder="Total Materias" required disabled>
 																			</div>
 																			<p class="formulario__input-error">Solo puede contener caracteres tipo letra y maximo de 40.</p>
 																		</div>
 																		
 																	</div>
-																</div>
-				
-				
+																</div> 
 																<!-- Input plan académico-->
 				
 																<div class="row ">
@@ -188,7 +212,7 @@
 																			<p class="formulario__input-error">Solo puede contener caracter tipo letra y maximo de 1 en mayúsculas.</p>
 																		</div>
 																	</div>
-				
+																	
 																	<!--Input clave oficial-->
 																	<div class="col-sm-12 col-md-6">
 																		<div class="formulario__grupo" id="grupo__claveoficial">
@@ -261,110 +285,33 @@
 																					<th>Créditos</th>
 																					<th>Unidades</th>
 																					<th>Horas totales</th>
+																					<th>Plan</th>
+																					
 																					<th style="text-align: center" data-orderable="false"><i class="zmdi zmdi-settings"></i> Opciones </th>
 																				</tr>
 																			</thead>
+																			<!-- ?php var_dump($this->alumnos);?> -->
 																			<tbody>
 																				<tr>
-																					<td>Mat_Discre</td>
-																					<td>Matemáticas discretas</td>
-																					<td>6</td>
-																					<td>3</td>
-																					<td>120</td>
+																					<?php 
+																					include_once 'models/asignatura.php';
+																					foreach($this->asignatura as $row)
+																					{
+																						$asignatura = new Asignatura();
+																						$asignatura = $row;
+																					
+																					?>
+																					<td><?php echo $asignatura->Clave_Materia;?></td>
+																					<td><?php echo $asignatura->Nombre_Asig;?></td>
+																					<td><?php echo $asignatura->Creditos;?></td>
+																					<td><?php echo $asignatura->Unidades;?></td>
+																					<td><?php echo $asignatura->Hrs_Totales;?></td>
+																					<td><?php echo $asignatura->Cod_Revision;?></td>
 																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
 																				</tr>
-																				<tr>
-																					<td>POO_IS23</td>
-																					<td>Programación orientada a objetos</td>
-																					<td>8</td>
-																					<td>4</td>
-																					<td>140</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Progr-Web12</td>
-																					<td>Programación web</td>
-																					<td>6</td>
-																					<td>3</td>
-																					<td>140</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>sistm_21</td>
-																					<td>Sistemas digitales</td>
-																					<td>2</td>
-																					<td>2</td>
-																					<td>100</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Arqui_soft12</td>
-																					<td>Arquitectura de software</td>
-																					<td>8</td>
-																					<td>4</td>
-																					<td>150</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Moviles-2</td>
-																					<td>Programación para móviles 2</td>
-																					<td>6</td>
-																					<td>3</td>
-																					<td>170</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Ciencias-V54</td>
-																					<td>Ciencias naturales</td>
-																					<td>4</td>
-																					<td>2</td>
-																					<td>120</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Progr-Web12</td>
-																					<td>Perreo intenso I</td>
-																					<td>6</td>
-																					<td>3</td>
-																					<td>140</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Arqui_soft12</td>
-																					<td>Arquitectura de software</td>
-																					<td>8</td>
-																					<td>4</td>
-																					<td>150</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Moviles-2</td>
-																					<td>Programación para móviles 2</td>
-																					<td>6</td>
-																					<td>3</td>
-																					<td>170</td>
-																					<td style="text-align: center"><a href="asignaturas.html" class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				<tr>
-																					<td>Ciencias-V54</td>
-																					<td>Ciencias naturales</td>
-																					<td>4</td>
-																					<td>2</td>
-																					<td>120</td>
-																					<td style="text-align: center"><a href="asignaturas.html"  class="btn btn-danger btn-sm editar-boton"><i class="zmdi zmdi-edit"></i></a><button class="btn btn-primary btn-sm"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-eye"></i></button></td>
-																				</tr>
-																				
+																				<?php } ?>																				
 																			</tbody>
-																			<tfoot>
-																				<tr>
-																					<th>Clave</th>
-																					<th>Asignatura</th>
-																					<th>Créditos</th>
-																					<th>Unidades</th>
-																					<th>Horas totales</th>
-																					<th style="text-align: center" data-orderable="false"><i class="zmdi zmdi-settings"></i> Opciones </th>
-																				</tr>
-																			</tfoot>
+
 																		
 																	</table>
 				
@@ -687,5 +634,54 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="./datatables/datatables.min.js"></script> 
 	<script type="text/javascript" src="./js/data.js"></script>  
+
+	<?php
+	if($session->get("alerta")){
+
+		switch($session->get("tipoAlerta")){
+			case 'gregarPlan':
+				echo "<script>
+					function alerta(){
+					swal({
+					title: '¡Plan académico agregado!',
+					text: 'El plan académico ha sido actualizada correctamente.',
+					type: 'success',
+						confirmButtonColor: '#03A9F4',
+						cancelButtonColor: '#F44336',
+						confirmButtonText: 'Cerrar',
+					}).then(function () {
+						
+					});
+					}
+					alerta();
+					</script>";
+				$session->add("alerta", false);
+				$session->add("tipoAlerta", " ");
+			break;
+
+			case 'actualizarPlan':
+				echo "<script>
+					function alerta(){
+					swal({
+					title: '¡Plan académico actualizado!',
+					text: 'El plan académico fue actualizada correctamente.',
+					type: 'success',
+						confirmButtonColor: '#03A9F4',
+						cancelButtonColor: '#F44336',
+						confirmButtonText: 'Cerrar',
+					}).then(function () {
+						
+					});
+					}
+					alerta();
+					</script>";
+				$session->add("alerta", false);
+				$session->add("tipoAlerta", " ");
+			break;
+			
+		}
+		
+	}
+?>
 </body>
 </html>

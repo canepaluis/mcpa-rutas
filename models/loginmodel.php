@@ -11,6 +11,7 @@ class LoginModel extends Model{
         $consulta = $this->db->connect()->prepare("SELECT ID_Perfil FROM cuenta WHERE ID_Mt_Ctl= ? AND Passw= ?");
         $consulta->execute(array($datos['usuario'], $datos['password']));
 
+        $this->db->cerrarConexion();
         return !empty($consulta) ? $fila = $consulta->fetch(PDO::FETCH_ASSOC) : false;
     }
 

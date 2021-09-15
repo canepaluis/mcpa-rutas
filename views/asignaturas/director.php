@@ -51,13 +51,13 @@
 
 			<!-- Menú de hamburguesa | MCPA -->
 				
-			<div class="cover dashboard-sideBar">
+				<div class="cover dashboard-sideBar">
 					<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
 						<div class="full-box dashboard-sideBar-ct">
 							<!-- Opciones del menú de hamburguesa | MCPA -->
 							<div class="caja-menu centrarvertical">
 								<ul class="list-unstyled full-box dashboard-sideBar-Menu">
-									<li class="seleccionar">
+									<li>
 										<a href="<?php echo URL;?>carreras"> 
 											<i class="zmdi zmdi-graduation-cap"></i>  Carrera
 										</a>
@@ -67,7 +67,7 @@
 											<i class="zmdi zmdi-library"></i>  Planes académicos
 										</a>
 									</li>
-									<li>
+									<li class="seleccionar">
 										<a href="<?php echo URL;?>asignaturas">
 											<i class="zmdi zmdi-book"></i> Asignaturas
 										</a>
@@ -136,15 +136,17 @@
 
 								<div class="row justify-content-center">
 									<div class="col-md-12">
-										<div class="input-group pb-4 pt-1 buscador">
-											<input type="text" class="form-control" placeholder="Buscar asignatura por clave" aria-label="Recipient's username" aria-describedby="button-addon2">
-											<button class="btn btn-primary" type="button" id="button-addon2"><i class="zmdi zmdi-search"></i> Buscar</button>
-										  </div>
+										<form method="POST" action="<?php echo constant('URL'); ?>asignaturas/getAsignatura">
+											<div class="input-group pb-4 pt-1 buscador">
+												<input type="text" class="form-control" name="busqueda" id="busqueda" placeholder="Buscar asignatura por clave" aria-label="Recipient's username" aria-describedby="button-addon2">
+												<button class="btn btn-primary" type="submit" id="button-addon2"><i class="zmdi zmdi-search"></i> Buscar</button>
+											</div>
+										</form>
 									</div>
 								</div>
 
 								<div class="formulario-box">
-									<form class="diseño-formulario" id="validacion_asignatura" action="<?php echo constant('URL'); ?>asignaturas/registroAsignatura" method="POST">
+									<form class="diseño-formulario" id="validacion_asignatura" action="<?php echo constant('URL'); ?>asignaturas/setAsignatura" method="POST">
 										
 											<div class="container-fluid">
 											
@@ -159,7 +161,7 @@
 														<div class="formulario__grupo" id="grupo__claveasignatura">
 															<label for="claveasignatura" class="formulario__label">Clave</label>
 															<div class="formulario__grupo-input">
-																<input type="text" class="formulario__input form-control" name="claveasignatura" id="claveasignatura" placeholder="Clave" required disabled>
+																<input type="text" class="formulario__input form-control" name="claveasignatura" id="claveasignatura" placeholder="Clave" value="<?php if(isset($this->resultado["Clave_Materia"])) echo $this->resultado["Clave_Materia"]; ?>" required disabled>
 															</div>
 															<p class="formulario__input-error">Solo puede tener letras, numeros y guiones, maximo 20 caracteres.</p>
 														</div>
@@ -179,7 +181,7 @@
 													</div>
 
 													<!-- Input nombre corto de la asignatura-->
-													<div class="col-sm-12 col-md-12 col-lg-5">
+													<div class="col-sm-12 col-md-12 col-lg-3">
 														<div class="formulario__grupo" id="grupo__nombrecortoasignatura">
 															<label for="usuario" class="formulario__label">Nombre corto de asignatura</label>
 															<div class="formulario__grupo-input">
@@ -188,6 +190,20 @@
 															<p class="formulario__input-error">Solo puede contener caracteres tipo letra, números y guiones, máximo 30 caracteres.</p>
 														</div>
 														
+													</div>
+
+													<!-- Input cuatrimestre-->
+													<div class="col-sm-12 col-md-6 col-lg-2">
+														<div class="formulario__grupo" id="grupo__creditoasignatura">
+															<label for="cuatrimestreasignatura" class="formulario__label">Cuatrimestre</label>
+															<select class="form-select" name="cuatrimestreasignatura" required disabled>
+																<?php foreach ($this->cuatrimestre as $opciones) : ?>
+																<option value="<?php echo $opciones->ID_Cuat ?>"> 
+																<?php echo $opciones->Nombre_Cuat ?></option>
+																<?php endforeach; ?>
+															</select>
+															<div class="invalid-feedback formulario__input-error">Selecciona el cuatrimestre.</div>
+														</div>
 													</div>
 												</div>
 
@@ -257,8 +273,36 @@
 														
 													</div>
 
+													<!-- Input plan de estudio-->
+													<div class="col-sm-12 col-md-6 col-lg-2">
+														<div class="formulario__grupo" id="grupo__creditoasignatura">
+															<label for="planasignatura" class="formulario__label">Plan de estudio</label>
+															<select class="form-select" name="planasignatura" required disabled>
+																<?php foreach ($this->planestudio as $opciones) : ?>
+																<option value="<?php echo $opciones->Clave ?>"> 
+																<?php echo $opciones->Clave_Oficial ?></option>
+																<?php endforeach; ?>
+															</select>
+															<div class="invalid-feedback formulario__input-error">Selecciona el plan de estudio.</div>
+														</div>
+													</div>
+
+													<!-- Input área académica-->
+													<div class="col-sm-12 col-md-6 col-lg-2">
+														<div class="formulario__grupo" id="grupo__creditoasignatura">
+															<label for="area_asignatura" class="formulario__label">Área Académica</label>
+															<select class="form-select" name="area_asignatura" required disabled>
+																<?php foreach ($this->areaacademica as $opciones) : ?>
+																<option value="<?php echo $opciones->ID_Area_Aca ?>">
+																<?php echo $opciones->Nombre_Aca ?></option>
+																<?php endforeach; ?>
+															</select>
+															<div class="invalid-feedback formulario__input-error">Selecciona el área académica.</div>
+														</div>
+													</div>
+
 													<!--Manual de unidad-->
-													<div class="col-sm-12 col-md-6 col-lg-9">
+													<div class="col-sm-12 col-md-6 col-lg-5">
 														<div class="formulario__grupo" id="grupo__manual">
 															<label for="usuario" class="formulario__label">Manual de asignatura</label>
 															<div class="formulario__grupo-input">
@@ -386,38 +430,8 @@
 															
 														  </tr>
 														</thead>
-														<tbody id="tabla">
-														  <tr class="colortr" >
-															<th class="text-center" scope="row">1</th>
-															<td >Interacción inicial a las mateméticas discretas</td>
-															<td>Números reales</td>
-															<td>No hay descripción</td>
-															<td>El alumno realizará procedimientos matemáticos para la aplicación de números reales</td>
-															<td>Operaciones, resolución de problemas matéticos</td>
-															<td style="text-align: center"><button class="btn btn-danger btn-sm"onclick="actualizarunidad()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-edit"></i></button></td>
-														  </tr>
-														  <tr class="colortr" >
-															<th class="text-center" scope="row">2</th>
-															<td >Interacción inicial a las mateméticas discretas</td>
-															<td>Números reales</td>
-															<td>No hay descripción</td>
-															<td>El alumno realizará procedimientos matemáticos para la aplicación de números reales</td>
-															<td>Operaciones, resolución de problemas matéticos</td>
-															<td style="text-align: center"><button class="btn btn-danger btn-sm"  onclick="actualizarunidad()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="zmdi zmdi-edit"></i></button></td>
-														  </tr>
-														  
+														<tbody id="tabla">										  
 														</tbody>
-														<tfoot>
-															<tr>
-																<th class="text-center" scope="col">Unidad</th>
-																<th scope="col">Descripción</th>
-																<th scope="col">Sub</th>
-																<th scope="col">Descripción</th>
-																<th scope="col">Competencias genéricas</th>
-																<th scope="col">Actividades de aprendizaje</th>
-																<th scope="col">Opciones</th>
-															  </tr>
-														</tfoot>
 													  </table>
 									
 													</div>
@@ -540,6 +554,7 @@
 			</div>
 		</div>
 	</section>
+
 	
 	<!--Pie de página | Footer -->
 	<footer class="vertical">
@@ -559,8 +574,71 @@
 	<script src="<?php echo URL;?>public/js/jquery.mCustomScrollbar.concat2.min.js"></script>
 	<script src="<?php echo URL;?>public/js/main.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<!--<script>
-		$.material.init();
-	</script>-->
+	<?php
+	if($session->get("alerta")){
+
+		switch($session->get("tipoAlerta")){
+			case 'Actualizar':
+				echo "<script>
+					function alerta(){
+					swal({
+					title: '¡Asignatura actualizada!',
+					text: 'La asignatura ha sido actualizada correctamente.',
+					type: 'success',
+						confirmButtonColor: '#03A9F4',
+						cancelButtonColor: '#F44336',
+						confirmButtonText: 'Cerrar',
+					}).then(function () {
+						
+					});
+					}
+					alerta();
+					</script>";
+				$session->add("alerta", false);
+				$session->add("tipoAlerta", " ");
+			break;
+
+			case 'Buscar':
+				echo "<script>
+					function alerta(){
+					swal({
+					title: 'Oops! asignatura no encontrada',
+					text: 'La asignatura que desea buscar no ha sido encontrada, verifique que la clave sea correcta.',
+					type: 'error',
+						confirmButtonColor: '#03A9F4',
+						cancelButtonColor: '#F44336',
+						confirmButtonText: 'Cerrar',
+					}).then(function () {
+						window.location.href=url +  'asignaturas';
+					});
+					}
+					alerta();
+					</script>";
+				$session->add("alerta", false);
+				$session->add("tipoAlerta", " ");
+			break;
+			case 'Eliminar':
+				echo "<script>
+					function alerta(){
+					swal({
+					title: '¡Asignatura eliminada!',
+					text: 'La asignatura fue eliminada correctamente.',
+					type: 'error',
+						confirmButtonColor: '#03A9F4',
+						cancelButtonColor: '#F44336',
+						confirmButtonText: 'Cerrar',
+					}).then(function () {
+						window.location.href=url +  'asignaturas';
+					});
+					}
+					alerta();
+					</script>";
+				$session->add("alerta", false);
+				$session->add("tipoAlerta", " ");
+			break;
+		}
+		
+	}
+?>
 </body>
 </html>

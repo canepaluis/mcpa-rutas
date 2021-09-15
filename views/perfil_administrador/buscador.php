@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="<?php echo URL;?>public/css/main.css">
 	<link rel="shortcut icon" href="<?php echo URL;?>public/assets/img/upqroo.ico"> 
 
-    <link href="<?php echo URL;?>public/css/style_perfil.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo URL;?>public/css/style_perfil.css" rel="stylesheet" >
     <link rel="stylesheet" href="<?php echo URL;?>public/css/buscador_perfil.css">
 	
 </head>
